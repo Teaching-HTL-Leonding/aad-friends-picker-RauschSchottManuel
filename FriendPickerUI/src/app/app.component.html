@@ -1,0 +1,15 @@
+<h1 *ngIf="!loggedIn">Hello, please login to use the services</h1>
+
+<button (click)="login()" [hidden]="loggedIn">Login</button>
+<button (click)="logout()" [hidden]="!loggedIn">Logout</button>
+
+<div *ngIf="loggedIn">
+    <p>Search for users:</p>
+    <input type="text" [(ngModel)]="userNameFilter" />
+    <button (click)="getUsers()">Users</button>
+    <div *ngIf="users">
+        <ul>
+            <li *ngFor="let user of users"><input type="checkbox" /></li>
+        </ul>
+    </div>
+</div>
